@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuralTac | AI Algorithm Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">NEURAL<span>TAC</span></a>
+    <span class="tag">AIES MINI PROJECT</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">ARTIFICIAL INTELLIGENCE EXPLORER</p>
+      <h1>Explore the Power of <span>AI</span></h1>
+      <p>Three classic AI algorithms. Three interactive demonstrations. One intelligent lab.</p>
+      <div class="hero-stats">
+        <div><strong>03</strong><span>Algorithms</span></div>
+        <div><strong>100%</strong><span>Interactive</span></div>
+        <div><strong>01</strong><span>AI Lab</span></div>
+      </div>
+    </section>
+
+    <nav class="module-nav">
+      <a href="#game">01 · Game AI</a>
+      <a href="#astar">02 · A* Search</a>
+      <a href="#hill">03 · Hill Climbing</a>
+    </nav>
+
+    <section class="panel" id="game">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ALGORITHM 01 · ADVERSARIAL SEARCH</p>
+          <h2>Tic-Tac-Toe AI</h2>
+          <p>Challenge an AI using Minimax and Alpha-Beta Pruning.</p>
+        </div>
+        <span class="pill">GAME AI</span>
+      </div>
+
+      <div class="game-layout">
+        <div>
+          <div id="gameStatus" class="status" aria-live="polite">Your turn — you are X</div>
+          <div id="board" class="board" aria-label="Tic-Tac-Toe board">
+            <button class="cell" data-index="0" aria-label="Cell 1"></button>
+            <button class="cell" data-index="1" aria-label="Cell 2"></button>
+            <button class="cell" data-index="2" aria-label="Cell 3"></button>
+            <button class="cell" data-index="3" aria-label="Cell 4"></button>
+            <button class="cell" data-index="4" aria-label="Cell 5"></button>
+            <button class="cell" data-index="5" aria-label="Cell 6"></button>
+            <button class="cell" data-index="6" aria-label="Cell 7"></button>
+            <button class="cell" data-index="7" aria-label="Cell 8"></button>
+            <button class="cell" data-index="8" aria-label="Cell 9"></button>
+          </div>
+          <div class="controls">
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="impossible" selected>Impossible</option>
+            </select>
+            <button class="button primary" id="newGame">New Game</button>
+          </div>
+        </div>
+
+        <aside class="stats-panel">
+          <h3>Match Statistics</h3>
+          <div class="score-grid">
+            <div class="score"><span>You · X</span><strong id="playerScore">0</strong></div>
+            <div class="score"><span>AI · O</span><strong id="aiScore">0</strong></div>
+            <div class="score"><span>Draws</span><strong id="drawScore">0</strong></div>
+          </div>
+          <div class="metric">
+            <span>Moves played</span><strong id="moveCount">0</strong>
+          </div>
+          <div class="algorithm-note">
+            <h3>Minimax</h3>
+            <p>Searches future game states and selects a strategic move.</p>
+          </div>
+          <div class="algorithm-note">
+            <h3>Alpha-Beta Pruning</h3>
+            <p>Skips branches that cannot change the final decision.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="panel" id="astar">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ALGORITHM 02 · HEURISTIC SEARCH</p>
+          <h2>A* Pathfinding</h2>
+          <p>Find a shortest path around obstacles using Manhattan distance.</p>
+        </div>
+        <span class="pill">PATHFINDING</span>
+      </div>
+
+      <div class="legend">
+        <span><i class="legend-start"></i> Start</span>
+        <span><i class="legend-goal"></i> Goal</span>
+        <span><i class="legend-wall"></i> Wall</span>
+        <span><i class="legend-visited"></i> Explored</span>
+        <span><i class="legend-path"></i> Path</span>
+      </div>
+      <p class="hint">Click grid cells to add or remove walls. Start and goal cannot be blocked.</p>
+      <div id="maze" class="maze" aria-label="A star pathfinding grid"></div>
+      <div class="controls">
+        <button class="button primary" id="solveMaze">Find Shortest Path</button>
+        <button class="button" id="randomMaze">Random Obstacles</button>
+        <button class="button" id="clearMaze">Clear Walls</button>
+      </div>
+      <div class="result-grid">
+        <div class="metric"><span>Path length</span><strong id="pathLength">—</strong></div>
+        <div class="metric"><span>Nodes explored</span><strong id="nodesExplored">—</strong></div>
+      </div>
+      <p id="mazeStatus" class="status" aria-live="polite">Add walls or find a path to begin.</p>
+    </section>
+
+    <section class="panel" id="hill">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ALGORITHM 03 · LOCAL OPTIMIZATION</p>
+          <h2>Hill Climbing Optimizer</h2>
+          <p>Watch an AI search neighboring states to improve its objective value.</p>
+        </div>
+        <span class="pill">OPTIMIZATION</span>
+      </div>
+
+      <div class="hill-layout">
+        <div class="chart-wrap">
+          <canvas id="hillChart" width="640" height="300" aria-label="Hill climbing optimization graph"></canvas>
+        </div>
+        <div class="hill-details">
+          <div class="metric"><span>Final position (x)</span><strong id="hillX">—</strong></div>
+          <div class="metric"><span>Objective value</span><strong id="hillValue">—</strong></div>
+          <div class="metric"><span>Iterations</span><strong id="hillIterations">—</strong></div>
+          <button class="button primary full" id="runHill">Run Hill Climbing</button>
+          <button class="button full" id="resetHill">Reset Simulation</button>
+        </div>
+      </div>
+      <p id="hillStatus" class="status" aria-live="polite">Run the optimizer to find a local maximum.</p>
+    </section>
+
+    <section class="panel about">
+      <p class="eyebrow">PROJECT OVERVIEW</p>
+      <h2>How the algorithms work</h2>
+      <div class="info-grid">
+        <article><h3>Minimax + Alpha-Beta</h3><p>Used for two-player games. Minimax evaluates possible outcomes while Alpha-Beta Pruning skips branches that cannot improve the decision.</p></article>
+        <article><h3>A* Search</h3><p>Ranks paths using f(n) = g(n) + h(n), combining the cost already traveled with a heuristic estimate to the goal.</p></article>
+        <article><h3>Hill Climbing</h3><p>Repeatedly moves to a better neighboring state until no neighbor improves the objective value. It can stop at a local maximum.</p></article>
+      </div>
+    </section>
+
+    <footer>NEURALTAC · ARTIFICIAL INTELLIGENCE & EXPERT SYSTEMS</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
